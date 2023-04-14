@@ -54,3 +54,8 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/java,windows
+Lambda/.settings/org.eclipse.core.resources.prefs
+Lambda/.settings/org.eclipse.jdt.core.prefs
+Lambda/.project
+Lambda/.classpath
+.project
