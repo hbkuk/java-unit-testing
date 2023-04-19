@@ -1,4 +1,5 @@
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
@@ -52,6 +53,18 @@ class PersonTest {
 
         // Then
         assertThat(result).isEqualTo("없음");
+    }
+    
+    @Test
+    @DisplayName("나이(age)가 50세를 초과할 경우 Runtime Exception이 발생하는지 확인")
+    void 나이_50세_초과() {
+        // Given
+        int age = 51;
+        
+        // When, Then
+        assertThatExceptionOfType(RuntimeException.class)
+                        .isThrownBy(() -> {people.add(new Person("tester1", age));})
+                        .withMessageMatching("50세 이하만 가입이 가능합니다.");
     }
 
 }
