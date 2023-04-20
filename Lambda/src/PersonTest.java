@@ -66,5 +66,23 @@ class PersonTest {
                         .isThrownBy(() -> {people.add(new Person("tester1", age));})
                         .withMessageMatching("50세 이하만 가입이 가능합니다.");
     }
+    
+    @Test
+    @DisplayName("특정 이름과 나이로 필터링이 되는지 확인:이름이 d로 시작하면서, 25세 이상")
+     void 특정_이름과_나이로_필터링() {
+        // Given
+        String nameToFilter = "d";
+        int age = 25;
+        
+        // When
+        List<Person> filteredPeople = people.stream()
+                        .filter(person -> person.getName().startsWith(nameToFilter) &&
+                                person.getAge() >= 25)
+                        .collect(Collectors.toList());
+        
+        // Then
+        assertThat(filteredPeople).hasSize(1);
+        assertThat(filteredPeople.get(0).getName()).isEqualTo("dk");
+    }
 
 }
