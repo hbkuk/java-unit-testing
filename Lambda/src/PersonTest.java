@@ -84,5 +84,29 @@ class PersonTest {
         assertThat(filteredPeople).hasSize(1);
         assertThat(filteredPeople.get(0).getName()).isEqualTo("dk");
     }
+    
+    @Test
+    @DisplayName("나이가 제일 많은 사람의 이름을 출력:다중 최댓값 고려")
+    void 나이가_제일_많은_사람() {
+        // Given
+        List<Person> people = Arrays.asList(
+                        new Person("o1", 50),
+                        new Person("o2", 50),
+                        new Person("o3", 49)
+                        );
+        
+        // When
+        int maxAge = people.stream()
+                        .mapToInt(Person::getAge)
+                        .max()
+                        .orElse(0);
+        
+        List<String> oldestPeopleNames = people.stream()
+                        .filter(person -> person.getAge() == maxAge )
+                        .map(Person::getName)
+                        .collect(Collectors.toList());
+        // Then
+        assertThat(oldestPeopleNames).contains("o1", "o2").doesNotContain("o3");
+    }
 
 }
