@@ -108,5 +108,32 @@ class PersonTest {
         // Then
         assertThat(oldestPeopleNames).contains("o1", "o2").doesNotContain("o3");
     }
+    
+    @Test
+    @DisplayName("이름이 가장 긴 사람의 이름을 출력:다중 최댓값 고려")
+    void 이름이_가장_긴_사람() {
+        //Given
+        List<Person> people = Arrays.asList(
+                new Person("o1", 50),
+                new Person("o2", 50),
+                new Person("o3", 49),
+                new Person("Constantinople", 20),
+                new Person("Christopher", 15)
+                );
+        
+        //When
+        int maxNameLength = people.stream()
+                                .mapToInt(person -> person.getName().length())
+                                .max()
+                                .orElse(0);
+
+        List<String> longestPeopleNames = people.stream()
+                            .filter(person -> person.getName().length() == maxNameLength )
+                            .map(Person::getName)
+                            .collect(Collectors.toList());
+        
+        //Then        
+        assertThat(longestPeopleNames).contains("Constantinople").doesNotContain("Christopher","o1","o2","o3");
+    }
 
 }
