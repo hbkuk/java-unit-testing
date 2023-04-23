@@ -3,7 +3,9 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -135,5 +137,27 @@ class PersonTest {
         //Then        
         assertThat(longestPeopleNames).contains("Constantinople").doesNotContain("Christopher","o1","o2","o3");
     }
+    
+    @Test
+    @DisplayName("이름이 가장 짧은 사람의 이름을 출력: 다중 최솟값 고려")
+    void testFindShortestName() {
+        // Given
+        List<Person> people = Arrays.asList(
+                new Person("o1", 50),
+                new Person("o2", 50),
+                new Person("o3", 49),
+                new Person("Constantinople", 20),
+                new Person("Christopher", 15)
+        );
 
+        // When
+        Optional<String> shortestName = people.stream()
+                .map(Person::getName)
+                .min(Comparator.comparingInt(String::length));
+
+        // Then
+        assertThat(shortestName.isPresent()).isTrue();
+        assertThat(Arrays.asList("o1", "o2", "o3")).contains(shortestName.get()); // shortestName 객체의 값을 검증
+        assertThat(shortestName.get()).doesNotContain("Constantinople","Christopher");
+    }
 }
