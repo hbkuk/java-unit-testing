@@ -1,3 +1,5 @@
+package lambda;
+
 public class Person {
     private static final int MAX_AGE = 50;
     private String name;
