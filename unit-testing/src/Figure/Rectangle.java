@@ -1,6 +1,5 @@
-package Figure;
+package figure;
 
-import java.awt.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;

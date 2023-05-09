@@ -1,14 +1,12 @@
-package Figure;
+package figure;
 
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RectangleTest {
 
