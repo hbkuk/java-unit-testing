@@ -14,11 +14,10 @@ class BoardTest {
                 .hit(1)
                 .builder();
 
-        assertThat(board.getTitle()).isEqualTo("제목 1" );
+        assertThat(board.getTitle()).isEqualTo("제목 1");
         assertThat(board.getWriter()).isEqualTo("자바국");
         assertThat(board.getContent()).isEqualTo("내용 1");
         assertThat(board.getHit()).isEqualTo(1);
 
     }
-
 }
