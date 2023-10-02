@@ -70,4 +70,19 @@ public class ListTest {
         //verify(mockedList, atLeast(2)).add("five times");
         //verify(mockedList, atMost(5)).add("three times");
     }
+
+    @Test
+    void interactions_verification() {
+        LinkedList<String> mockedList = mock(LinkedList.class);
+        LinkedList<String> mockTwo = mock(LinkedList.class);
+        LinkedList<String> mockThree = mock(LinkedList.class);
+
+        mockedList.add("one");
+
+        verify(mockedList).add("one");
+
+        verify(mockedList, never()).add("two");
+
+        verifyNoInteractions(mockTwo, mockThree);
+    }
 }
