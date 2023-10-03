@@ -22,10 +22,45 @@ class StringTest {
 
     @Test
     @DisplayName("주어진 문자열에서 문자열을 구성하고 있는 각각의 문자열들이 고유한지를 판단한다")
-    void UniqueCharacterInString() {
+    void uniqueCharacterInString() {
         assertThat(StringUtil.uniqueCharacterInString("abcd")).isTrue();
         assertThat(StringUtil.uniqueCharacterInString("abcdefghij")).isTrue();
         assertThat(StringUtil.uniqueCharacterInString("abccde")).isFalse();
         assertThat(StringUtil.uniqueCharacterInString("abca")).isFalse();
+    }
+
+    @Test
+    @DisplayName("주어진 문자열이 애너그램인지를 판단한다")
+    void isAnagram() {
+        assertThat(StringUtil.isAnagram("arc", "car")).isTrue();
+        assertThat(StringUtil.isAnagram("caaabbb", "abababc")).isTrue();
+        assertThat(StringUtil.isAnagram("caabbbb", "abababc")).isFalse();
+        assertThat(StringUtil.isAnagram("arc", "carr")).isFalse();
+        assertThat(StringUtil.isAnagram("arc", "caz")).isFalse();
+    }
+
+    @Test
+    @DisplayName("주어진 문자열을 길이와 함께 적어주면서 압축을 한다")
+    void characterCompressWithLength() {
+        assertThat(StringUtil.characterCompressWithLength(null)).isNull();
+        assertThat(StringUtil.characterCompressWithLength("aaabbbccc")).isEqualTo("a3b3c3");
+        assertThat(StringUtil.characterCompressWithLength("aabbacbccc")).isEqualTo("a3b3c4");
+        assertThat(StringUtil.characterCompressWithLength("aaabbbccc")).isEqualTo("a3b3c3");
+    }
+
+    @Test
+    @DisplayName("주어진 문서(단어별로 나뉘어진 배열)에서 특정 단어의 빈도를 구한다")
+    void frequencyStringInDocument() {
+        String[] strArr = new String[100];
+        assertThat(StringUtil.frequencyStringInDocument(strArr, null)).isEqualTo(0);
+
+        strArr[0] = "jbee";
+        assertThat(StringUtil.frequencyStringInDocument(strArr, "jbee")).isEqualTo(1);
+
+        strArr[1] = "jbee";
+        assertThat(StringUtil.frequencyStringInDocument(strArr, "jbee")).isEqualTo(2);
+
+        strArr[2] = "jbee";
+        assertThat(StringUtil.frequencyStringInDocument(strArr, "jbee")).isEqualTo(3);
     }
 }
