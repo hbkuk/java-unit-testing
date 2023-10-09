@@ -146,7 +146,43 @@ public class SortAndSearch {
         return sortedArray;
     }
 
+    // 1. 전달받은 배열의 최대 자릿수를 확인한다.        ==> O(N)
+    // 2. 최대 자리수는 정렬을 반복할 횟수를 의미한다.    ==>    
+    // 3. 일의자리 숫자부터 차례대로 정렬한다.           ==> O(N) * 최대 자릿수
+    // - 단, 숫자가 동일할 경우 인덱스가 빠른 숫자가 우선적으로 배치된다.
     public static int[] radixSort(int[] arr) {
+        int maxValue = arr[0];
+        for (int value : arr) {
+            if (value > maxValue) {
+                maxValue = value;
+            }
+        }
+
+        int maxDigits = (int) Math.log10(maxValue) + 1;
+
+        for (int digit = 1; digit <= maxDigits; digit++) {
+            int n = arr.length;
+            int[] output = new int[n];
+            int[] count = new int[10];
+
+            int exp = (int) Math.pow(10, digit - 1);
+
+            for (int value : arr) {
+                int digitValue = (value / exp) % 10;
+                count[digitValue]++;
+            }
+
+            for (int i = 1; i < 10; i++) {
+                count[i] += count[i - 1];
+            }
+
+            for (int i = n - 1; i >= 0; i--) {
+                int digitValue = (arr[i] / exp) % 10;
+                output[count[digitValue] - 1] = arr[i];
+                count[digitValue]--;
+            }
+            System.arraycopy(output, 0, arr, 0, n);
+        }
         return arr;
     }
 }

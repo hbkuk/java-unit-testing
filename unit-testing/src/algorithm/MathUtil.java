@@ -42,4 +42,29 @@ public class MathUtil {
         // 전체 시간 복잡도 => O(small)
         return Math.abs(lcm);
     }
+
+    // 1. nCr => n! / r! * (n-r)!
+    public static int basicCombination(int n, int r) {
+        if (r > n || r < 0) {
+            return 0;
+        }
+
+        // 최악: O(N) + O(N) + O(N) = O(N)
+        return factorial(n) / (factorial(r) * factorial(n - r));
+    }
+
+    private static int factorial(int num) {
+        if (num == 0) {
+            return 1;
+        }
+
+        int result = 1;
+
+        // O(N), 입력받은 num 만큼 루프 반복
+        while (num > 0) {
+            result *= num;
+            num--;
+        }
+        return result;
+    }
 }
