@@ -67,4 +67,11 @@ public class MathUtil {
         }
         return result;
     }
+
+    public static int findPrimeNumTest(int num) {
+        // 1. 해당 수의 약수를 구한다.
+        // 2. 구한 약수에서 소수를 찾는다.
+        // 3. 소수의 개수를 카운트해서 반환한다.
+        return 0;
+    }
 }
