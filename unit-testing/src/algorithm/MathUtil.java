@@ -3,7 +3,7 @@ package algorithm;
 public class MathUtil {
 
     // 최대 공약수
-    public static int gcd(int num1, int num2) {
+    public static int gcdLoop(int num1, int num2) {
         // O(1), 상수 시간에 작동
         int big = Math.max(num1, num2);
         // O(1), 상수 시간에 작동
@@ -27,6 +27,13 @@ public class MathUtil {
         return gcd;
     }
 
+    public static int gcdRecursion(int num1, int num2) {
+        if (num2 == 0) {
+            return num1;
+        }
+        return gcdRecursion(num2, num1 % num2);
+    }
+
     // 최소 공배수
     public static int lcm(int num1, int num2) {
         // O(1), 상수 시간에 작동
@@ -35,7 +42,7 @@ public class MathUtil {
         }
 
         // O(small), 루프는 small번 반복
-        int gcd = gcd(num1, num2);
+        int gcd = gcdLoop(num1, num2);
         // O(1), 상수 시간에 작동
         int lcm = (num1 * num2) / gcd;
 
@@ -66,5 +73,36 @@ public class MathUtil {
             num--;
         }
         return result;
+    }
+
+    // 1. 주어진 숫자를 기준으로 1을 제외한 숫자로 나누어본다.
+    // 2. 나누어지지 않는다면, counting ++
+    // 3. 숫자를 반환한다.
+    public static int findPrimeNum(int number) {
+        if (number < 0) {
+            return -1;
+        }
+
+        if (number < 2) {
+            return 0;
+        }
+
+        int primeCount = 0;
+        for (int i = 2; i <= number; i++) { // Loop range ==> 1 ~ i
+            boolean isPrime = true;
+
+            // i... 이거 소수니?
+            for (int j = 2; j < i; j++) {
+                if (i % j == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+
+            if (isPrime) {
+                primeCount++;
+            }
+        }
+        return primeCount;
     }
 }
