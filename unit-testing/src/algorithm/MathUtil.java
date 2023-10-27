@@ -75,9 +75,6 @@ public class MathUtil {
         return result;
     }
 
-    // 1. 주어진 숫자를 기준으로 1을 제외한 숫자로 나누어본다.
-    // 2. 나누어지지 않는다면, counting ++
-    // 3. 숫자를 반환한다.
     public static int findPrimeNum(int number) {
         if (number < 0) {
             return -1;
@@ -104,5 +101,31 @@ public class MathUtil {
             }
         }
         return primeCount;
+    }
+
+    public static int fibonacciByFor(int number) {
+        int prePointer = 1;
+        int prePrePointer = 0;
+        int currentValue = 0;
+        for (int i = 2; i <= number; i++) {
+            currentValue = prePrePointer + prePointer;
+            prePrePointer = prePointer;
+            prePointer = currentValue;
+        }
+        return currentValue;
+    }
+
+    public static int fibonacciByRec(int number) {
+        if (number == 0) {
+            return 0;
+        }
+        if (number == 1) {
+            return 1;
+        }
+        return fibonacciByRec(number - 2) + fibonacciByRec(number - 1);
+    }
+
+    public static int fibonacciByDp(int number) {
+        return 0;
     }
 }

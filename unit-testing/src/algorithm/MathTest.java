@@ -45,4 +45,20 @@ public class MathTest {
         assertThat(MathUtil.findPrimeNum(12)).isEqualTo(5);
         assertThat(MathUtil.findPrimeNum(44)).isEqualTo(14);
     }
+
+    @Test
+    @DisplayName("Fibonacci를 계산하는 함수")
+    public void fibonacci() throws Exception {
+        assertThat(MathUtil.fibonacciByFor(5)).isEqualTo(5);
+        assertThat(MathUtil.fibonacciByFor(6)).isEqualTo(8);
+        assertThat(MathUtil.fibonacciByFor(7)).isEqualTo(13);
+
+        assertThat(MathUtil.fibonacciByRec(5)).isEqualTo(5);
+        assertThat(MathUtil.fibonacciByRec(6)).isEqualTo(8);
+        assertThat(MathUtil.fibonacciByRec(7)).isEqualTo(13);
+
+        assertThat(MathUtil.fibonacciByDp(5)).isEqualTo(5);
+        assertThat(MathUtil.fibonacciByDp(6)).isEqualTo(8);
+        assertThat(MathUtil.fibonacciByDp(7)).isEqualTo(13);
+    }
 }
