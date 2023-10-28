@@ -61,4 +61,14 @@ public class MathTest {
         assertThat(MathUtil.fibonacciByDp(6)).isEqualTo(8);
         assertThat(MathUtil.fibonacciByDp(7)).isEqualTo(13);
     }
+    
+    @Test
+    @DisplayName("주어진 정수의 각 자리 수의 합을 구한다.")
+    public void sumEachNumber () throws Exception {
+        assertThat(MathUtil.sumEachNumber(0)).isEqualTo(0);
+        assertThat(MathUtil.sumEachNumber(100)).isEqualTo(1);
+        assertThat(MathUtil.sumEachNumber(235)).isEqualTo(10);
+        assertThat(MathUtil.sumEachNumber(235678)).isEqualTo(31);
+        assertThat(MathUtil.sumEachNumber(-1)).isEqualTo(1);
+    }
 }

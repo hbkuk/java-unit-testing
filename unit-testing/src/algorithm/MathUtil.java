@@ -140,4 +140,17 @@ public class MathUtil {
 
         return dp[number];
     }
+
+    public static int sumEachNumber(int value) {
+        int base = Math.abs(value);
+        int result = 0;
+
+        while (base > 0) {
+            result += base % 10;
+            base = base / 10;
+        }
+
+        return result;
+    }
+
 }
