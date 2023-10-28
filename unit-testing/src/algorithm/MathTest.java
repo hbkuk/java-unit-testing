@@ -71,4 +71,17 @@ public class MathTest {
         assertThat(MathUtil.sumEachNumber(235678)).isEqualTo(31);
         assertThat(MathUtil.sumEachNumber(-1)).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("사다리를 한 칸 또는 두 칸씩 오를 수 있다고 했을 때 사다리 높이에 따른 사다리 오르기 방법의 경우의 수를 구한다.")
+    public void ladder() throws Exception {
+        assertThat(MathUtil.ladder(0)).isEqualTo(1);
+        assertThat(MathUtil.ladder(1)).isEqualTo(1);
+        assertThat(MathUtil.ladder(2)).isEqualTo(2);
+        assertThat(MathUtil.ladder(3)).isEqualTo(3);
+        assertThat(MathUtil.ladder(4)).isEqualTo(5);
+        assertThat(MathUtil.ladder(5)).isEqualTo(8);
+        assertThat(MathUtil.ladder(6)).isEqualTo(13);
+        assertThat(MathUtil.ladder(7)).isEqualTo(21);
+    }
 }

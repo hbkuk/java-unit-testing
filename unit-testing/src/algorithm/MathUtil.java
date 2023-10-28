@@ -153,4 +153,10 @@ public class MathUtil {
         return result;
     }
 
+    public static int ladder(int number) {
+        if(number < 2) {
+            return 1;
+        }
+        return ladder(number - 2) + ladder(number - 1);
+    }
 }
