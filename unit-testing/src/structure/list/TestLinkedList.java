@@ -2,6 +2,8 @@ package structure.list;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestLinkedList {
@@ -64,6 +66,16 @@ public class TestLinkedList {
         linkedList.removeDuplicates();
         assertEquals(3, linkedList.size());
     }
+
+    @Test
+    void findToLast() {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.append(33);
+        linkedList.append(34);
+        linkedList.append(35);
+
+        assertEquals(new Node<>(35), linkedList.findKthFromEnd(1));
+    }
 }
 
 class LinkedList<E> {
@@ -114,16 +126,30 @@ class LinkedList<E> {
         Node<E> pointer = header.next;
         while (pointer != null) {
             Node<E> runner = pointer;
-            while(runner.next != null) {
+            while (runner.next != null) {
                 if (runner.next.data == pointer.data) {
                     runner.next = runner.next.next;
-                    size --;
+                    size--;
                 } else {
                     runner = runner.next;
                 }
             }
             pointer = pointer.next;
         }
+    }
+
+    public Node<E> findKthFromEnd(int k) {
+        if (k <= 0) {
+            throw new IllegalArgumentException();
+        }
+
+        int findIndex = size - k;
+        Node<E> curruentNode = header.next;
+
+        for (int i = 0; i < findIndex; i++) {
+            curruentNode = curruentNode.next;
+        }
+        return curruentNode;
     }
 }
 
@@ -136,5 +162,18 @@ class Node<T> {
 
     public Node(T data) {
         this.data = data;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Node<?> node = (Node<?>) o;
+        return Objects.equals(data, node.data) && Objects.equals(next, node.next);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(data, next);
     }
 }
