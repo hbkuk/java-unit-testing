@@ -78,7 +78,8 @@ public class TestLinkedList {
     }
 }
 
-class LinkedList<E> {
+class
+LinkedList<E> {
     private final Node<E> header;
     private int size;
 

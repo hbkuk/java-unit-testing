@@ -40,7 +40,7 @@ public class ListTest {
 
     @Test
     void listSpy() {
-        List<String> spy = spy(new ArrayList<>()); // main.java.spy 객체 생성
+        List<String> spy = spy(new ArrayList<>()); // spy 객체 생성
 
         // spy를 이용해서 메서드 호출 기록
         spy.add("item 1");
