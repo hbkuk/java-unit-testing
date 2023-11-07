@@ -19,7 +19,7 @@ public class AnimalTest {
         Class<?> clazz = goat.getClass();
 
         assertEquals("Goat", clazz.getSimpleName());
-        assertEquals("reflection.animal.Goat", clazz.getName());
+        assertEquals("main.java.reflection.animal.Goat", clazz.getName());
     }
 
     @Test
@@ -27,7 +27,7 @@ public class AnimalTest {
         Class<?> clazz = Class.forName("reflection.animal.Goat");
 
         assertEquals("Goat", clazz.getSimpleName());
-        assertEquals("reflection.animal.Goat", clazz.getName());
+        assertEquals("main.java.reflection.animal.Goat", clazz.getName());
     }
 
     @Test

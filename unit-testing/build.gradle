@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group 'unit-testing'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.projectlombok:lombok:1.18.26'
+    compileOnly 'org.projectlombok:lombok'
+
+    implementation 'mysql:mysql-connector-java:8.0.28'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation("org.assertj:assertj-core:3.22.0")
+    testImplementation('org.mockito:mockito-inline:3.4.0')
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+}
+
+test {
+    useJUnitPlatform()
+}

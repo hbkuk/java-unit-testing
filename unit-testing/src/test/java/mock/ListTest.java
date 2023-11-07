@@ -2,9 +2,13 @@ package mock;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
 public class ListTest {
@@ -84,5 +88,35 @@ public class ListTest {
         verify(mockedList, never()).add("two");
 
         verifyNoInteractions(mockTwo, mockThree);
+    }
+
+    @Test
+    void mockList_1() {
+        ArrayList<String> mockList = mock(ArrayList.class);
+
+        // 1차 검증
+        assertNull(mockList.get(0));
+        assertThat(mockList.size()).isZero();
+
+        // 데이터 추가
+        mockList.add("data 1");
+        mockList.add("data 2");
+
+        // 2차 검증
+        assertNull(mockList.get(0));
+        assertThat(mockList.size()).isZero();
+    }
+
+    @Test
+    void mockList_2() {
+        ArrayList<String> mockList = mock(ArrayList.class);
+
+        // 행동 재정의 or 응답 반환 설정(stubbing)
+        when(mockList.get(0)).thenReturn("data 1");
+        when(mockList.size()).thenReturn(2);
+
+        // 검증
+        assertThat(mockList.get(0)).isEqualTo("data 1");
+        assertThat(mockList.size()).isEqualTo(2);
     }
 }

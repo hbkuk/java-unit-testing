@@ -85,7 +85,7 @@ public class MatcherTest {
     }
 
     @Test
-    @DisplayName("matcher.group() 메서드를 활용한 정규식과 일치하는 문자열 그룹을 확인")
+    @DisplayName("main.java.matcher.group() 메서드를 활용한 정규식과 일치하는 문자열 그룹을 확인")
     void group_test() {
         // given
         String input = "입력하신 좌표는 (1,2) 입니다.";
@@ -100,7 +100,7 @@ public class MatcherTest {
     }
     
     @Test
-    @DisplayName("matcher.group(int group) 메서드를 활용한 정규식과 일치하는 문자열 그룹을 확인")
+    @DisplayName("main.java.matcher.group(int group) 메서드를 활용한 정규식과 일치하는 문자열 그룹을 확인")
     void group_test2() {
         // given
         String input = "입력하신 좌표는 (50,60) 입니다.";
