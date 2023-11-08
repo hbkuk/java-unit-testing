@@ -26,13 +26,13 @@ public class StringUtil {
         int right = charArray.length - 1;
 
         // O(N/2), 문자열 길이에 절반만큼 반복
-        while( left < right) {
+        while (left < right) {
             char temp = charArray[left];
             charArray[left] = charArray[right];
             charArray[right] = temp;
 
-            left ++;
-            right --;
+            left++;
+            right--;
         }
 
         // 전체 시간복잡도 => O(N)
@@ -59,7 +59,7 @@ public class StringUtil {
 
     public static boolean isAnagram(String firstWord, String secondWord) {
         // O(1), 상수 시간에 작동
-        if( firstWord.length() != secondWord.length()) {
+        if (firstWord.length() != secondWord.length()) {
             return false;
         }
 
@@ -80,7 +80,7 @@ public class StringUtil {
     public static String characterCompressWithLength(String str) {
 
         // O(1), 상수 시간에 작동
-        if(str == null || str.length() == 0) {
+        if (str == null || str.length() == 0) {
             return null;
         }
 
@@ -112,18 +112,18 @@ public class StringUtil {
 
     public static int frequencyStringInDocument(String[] strArr, String str) {
         // O(1), 상수 시간 동작
-        if(strArr.length == 0) {
+        if (strArr.length == 0) {
             return 0;
         }
         // O(1), 상수 시간 동작
-        if(str == null || str.length() == 0) {
+        if (str == null || str.length() == 0) {
             return 0;
         }
 
         int frequency = 0;
         // O(N), 문자열의 길이에 비례한 시간이 소요
-        for(String s : strArr) {
-            if(s != null && s.equals(str)) {
+        for (String s : strArr) {
+            if (s != null && s.equals(str)) {
                 frequency++;
             }
         }
