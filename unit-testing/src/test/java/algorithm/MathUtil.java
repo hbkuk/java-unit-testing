@@ -159,4 +159,23 @@ public class MathUtil {
         }
         return ladder(number - 2) + ladder(number - 1);
     }
+
+    public static int[] carpet(int brown, int yellow) {
+        int area = brown + yellow;
+        int[] answer = new int[2];
+
+        for (int i = 3; i <= Math.sqrt(area); i++) {
+            if (area % i == 0) {
+                int width = area / i;
+                int height = i;
+
+                if ((width + height) * 2 - 4 == brown) {
+                    answer[0] = width;
+                    answer[1] = height;
+                    break;
+                }
+            }
+        }
+        return answer; // return {width, height}
+    }
 }

@@ -4,7 +4,11 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+import java.util.stream.Stream;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MathTest {
 
@@ -84,5 +88,20 @@ public class MathTest {
         Assertions.assertThat(MathUtil.ladder(5)).isEqualTo(8);
         Assertions.assertThat(MathUtil.ladder(6)).isEqualTo(13);
         Assertions.assertThat(MathUtil.ladder(7)).isEqualTo(21);
+    }
+
+    @Test
+    @DisplayName("카펫에서 갈색 격자의 수 brown, 노란색 격자의 수 yellow가 매개변수로 주어질 때 카펫의 가로, 세로 크기를 순서대로 배열에 담아 return")
+    public void carpet() throws Exception {
+        Assertions.assertThat(MathUtil.carpet(10, 2)).isEqualTo(new int[]{4,3});
+        Assertions.assertThat(MathUtil.carpet(8, 1)).isEqualTo(new int[]{3,3});
+        Assertions.assertThat(MathUtil.carpet(24, 24)).isEqualTo(new int[]{8,6});
+    }
+
+    @Test
+    public void reduce() {
+        Stream<Integer> numbers = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        int result = numbers.reduce(Integer::sum).orElse(0); // 비어있으면 0반환
+        assertEquals(55, result);
     }
 }
