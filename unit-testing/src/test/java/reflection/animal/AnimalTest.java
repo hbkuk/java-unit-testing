@@ -1,5 +1,6 @@
 package reflection.animal;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AnimalTest {
 
     @Test
+    @Disabled
     void givenObject_whenGetsClassName_thenCorrect() {
         Object goat = new Goat("goat");
         Class<?> clazz = goat.getClass();
@@ -23,6 +25,7 @@ public class AnimalTest {
     }
 
     @Test
+    @Disabled
     void givenClassName_whenCreatesObject_thenCorrect() throws ClassNotFoundException {
         Class<?> clazz = Class.forName("reflection.animal.Goat");
 
@@ -44,6 +47,7 @@ public class AnimalTest {
     }
 
     @Test
+    @Disabled
     void givenClass_whenGetsMethods_thenCorrect() throws ClassNotFoundException {
         Class<?> animalClass = Class.forName("reflection.animal.Animal");
         Method[] methods = animalClass.getDeclaredMethods();

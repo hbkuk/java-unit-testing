@@ -63,4 +63,13 @@ class StringTest {
         strArr[2] = "jbee";
         assertThat(StringUtil.frequencyStringInDocument(strArr, "jbee")).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("올바른 괄호 문자열인지 확인한다.")
+    void correctString() {
+        assertThat(StringUtil.correctString("[](){}")).isEqualTo(3);
+        assertThat(StringUtil.correctString("}]()[{")).isEqualTo(2);
+        assertThat(StringUtil.correctString("[)(]")).isEqualTo(0);
+        assertThat(StringUtil.correctString("}}}")).isEqualTo(0);
+    }
 }

@@ -1,6 +1,7 @@
 package algorithm;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 public class StringUtil {
 
@@ -130,4 +131,55 @@ public class StringUtil {
         // 전체 시간복잡도 => O(N)
         return frequency;
     }
+
+    public static int correctString(String s) {
+        int countOfCorrectString = 0;
+
+        char[] chars = s.toCharArray();
+
+        Stack<Character> stack = new Stack<>();
+        for (int i = 1; i <= chars.length; i++) {
+            if (i != 1) {
+                stringRotation(chars);
+            }
+
+            for (char c : chars) {
+                if (stack.isEmpty()) {
+                    stack.push(c);
+                } else {
+                    char preChar = stack.peek();
+                    if (preChar == '(') {
+                        if (c == ')') {
+                            stack.pop();
+                            continue;
+                        }
+                    } else if (preChar == '[') {
+                        if (c == ']') {
+                            stack.pop();
+                            continue;
+                        }
+                    } else if (preChar == '{') {
+                        if (c == '}') {
+                            stack.pop();
+                            continue;
+                        }
+                    }
+                    stack.push(c);
+                }
+            }
+            if (stack.isEmpty()) {
+                countOfCorrectString++;
+            }
+            stack.clear();
+        }
+        return countOfCorrectString;
+    }
+
+    private static void stringRotation(char[] chars) {
+        char tempChar = chars[0];
+        System.arraycopy(chars, 1, chars, 0, chars.length - 1);
+        chars[chars.length - 1] = tempChar;
+    }
+
 }
+

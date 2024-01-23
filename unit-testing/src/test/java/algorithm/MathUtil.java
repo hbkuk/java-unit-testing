@@ -154,7 +154,7 @@ public class MathUtil {
     }
 
     public static int ladder(int number) {
-        if(number < 2) {
+        if (number < 2) {
             return 1;
         }
         return ladder(number - 2) + ladder(number - 1);
@@ -177,5 +177,18 @@ public class MathUtil {
             }
         }
         return answer; // return {width, height}
+    }
+
+    public static long longJump(int n) {
+        int[] dp = new int[n + 1];
+
+        dp[1] = 1;
+        dp[2] = 2;
+
+        for(int i = 3; i <= n; i++) {
+            dp[i] = (dp[i - 1] + dp[i - 2]) % 123456;
+        }
+
+        return dp[n];
     }
 }

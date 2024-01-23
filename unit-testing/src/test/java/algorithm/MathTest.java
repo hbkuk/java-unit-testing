@@ -104,4 +104,10 @@ public class MathTest {
         int result = numbers.reduce(Integer::sum).orElse(0); // 비어있으면 0반환
         assertEquals(55, result);
     }
+
+    @Test
+    public void longJump() {
+        assertEquals(5, MathUtil.longJump(4));
+        assertEquals(3, MathUtil.longJump(3));
+    }
 }
