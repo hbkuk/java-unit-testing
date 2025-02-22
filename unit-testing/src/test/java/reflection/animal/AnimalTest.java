@@ -15,22 +15,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AnimalTest {
 
     @Test
-    @Disabled
     void givenObject_whenGetsClassName_thenCorrect() {
         Object goat = new Goat("goat");
         Class<?> clazz = goat.getClass();
 
         assertEquals("Goat", clazz.getSimpleName());
-        assertEquals("main.java.reflection.animal.Goat", clazz.getName());
+        assertEquals("reflection.animal.Goat", clazz.getName());
     }
 
     @Test
-    @Disabled
     void givenClassName_whenCreatesObject_thenCorrect() throws ClassNotFoundException {
         Class<?> clazz = Class.forName("reflection.animal.Goat");
 
         assertEquals("Goat", clazz.getSimpleName());
-        assertEquals("main.java.reflection.animal.Goat", clazz.getName());
+        assertEquals("java.reflection.animal.Goat", clazz.getName());
     }
 
     @Test
